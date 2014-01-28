@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication16.Models.BatteryLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div id="container1" style="width:100%; height:400px;"></div>
+<div id="line" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="gauge" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Voltage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Current)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+    <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voltage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Current)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.BatteryID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.BatteryID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.BatteryID })
+            </td>
+        </tr>
+}
+
+    </table>
